@@ -1,0 +1,36 @@
+name: Build Fabrication Artifacts
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: kicad/kicad:9.0-full
+      # See https://github.com/actions/checkout/issues/1575#issuecomment-2536435128
+      options: --user root
+    defaults:
+      run:
+        working-directory: hw/LoraLeaf
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare folders
+        run: |
+          mkdir -p ./build/gerbers ./build/drill ./build/bom ./build/docs
+
+      # Schematic documentation (PDF + SVG)
+      - name: Schematic PDF
+        run: |
+          kicad-cli sch export pdf -o ./build/docs/LoraLeaf-schematic.pdf ./LoraLeaf.kicad_sch
+      - name: Schematic SVG pages
+        run: |
+          kicad-cli sch export svg -o ./build/docs/ ./LoraLeaf.kicad_sch
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: fabrication-artifacts
+          path: hw/LoraLeaf/build
+          retention-days: 14

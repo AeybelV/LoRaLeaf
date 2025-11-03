@@ -1,0 +1,23 @@
+name: Validate (ERC/DRC)
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    container:
+      image: kicad/kicad:9.0-full
+      # See https://github.com/actions/checkout/issues/1575#issuecomment-2536435128
+      options: --user root
+    defaults:
+      run:
+        working-directory: hw/LoraLeaf
+    steps:
+      - uses: actions/checkout@v4
+
+      # ERC (schematics)
+      - name: ERC
+        run: |
+          kicad-cli sch erc ./LoraLeaf.kicad_sch --exit-code-violations --severity-error 
