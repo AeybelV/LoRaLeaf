@@ -25,7 +25,16 @@
     "equivalence_files": []
   },
   "erc": {
-    "erc_exclusions": [],
+    "erc_exclusions": [
+      [
+        "power_pin_not_driven|3022600|863600|cc302fce-4ad4-4388-ae09-b6750c0f565f|00000000-0000-0000-0000-000000000000|/593409af-33c3-4cec-a723-1a4f4224a3a9|/593409af-33c3-4cec-a723-1a4f4224a3a9|",
+        ""
+      ],
+      [
+        "power_pin_not_driven|3022600|889000|4c3f663e-9309-4840-a8e1-0de99589b936|00000000-0000-0000-0000-000000000000|/593409af-33c3-4cec-a723-1a4f4224a3a9|/593409af-33c3-4cec-a723-1a4f4224a3a9|",
+        ""
+      ]
+    ],
     "meta": {
       "version": 0
     },
@@ -272,6 +281,13 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "line_style": 0,
+        "name": "RF_50R",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgb(194, 0, 194)"
       }
     ],
     "meta": {
@@ -279,7 +295,32 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "RF_50R",
+        "pattern": "RF*"
+      },
+      {
+        "netclass": "RF_50R",
+        "pattern": "/RF_BALUN_RFO_IN"
+      },
+      {
+        "netclass": "RF_50R",
+        "pattern": "/RF_BALUN_RFO_OUT"
+      },
+      {
+        "netclass": "RF_50R",
+        "pattern": "/RF_BALUN_RFI_IN"
+      },
+      {
+        "netclass": "RF_50R",
+        "pattern": "/RF_ANT_PI_IN"
+      },
+      {
+        "netclass": "RF_50R",
+        "pattern": "/RF_ANT_PI_OUT"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
@@ -325,6 +366,12 @@
           "show": true
         },
         {
+          "group_by": false,
+          "label": "Description",
+          "name": "Description",
+          "show": true
+        },
+        {
           "group_by": true,
           "label": "Value",
           "name": "Value",
@@ -334,19 +381,19 @@
           "group_by": true,
           "label": "DNP",
           "name": "${DNP}",
-          "show": true
+          "show": false
         },
         {
           "group_by": true,
           "label": "Exclude from BOM",
           "name": "${EXCLUDE_FROM_BOM}",
-          "show": true
+          "show": false
         },
         {
           "group_by": true,
           "label": "Exclude from Board",
           "name": "${EXCLUDE_FROM_BOARD}",
-          "show": true
+          "show": false
         },
         {
           "group_by": true,
@@ -359,12 +406,66 @@
           "label": "Datasheet",
           "name": "Datasheet",
           "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Manafacturer",
+          "name": "Manafacturer",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "MFR Part # ",
+          "name": "MFR Part # ",
+          "show": true
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer_Name",
+          "name": "Manufacturer_Name",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Manufacturer_Part_Number",
+          "name": "Manufacturer_Part_Number",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Mouser Part Number",
+          "name": "Mouser Part Number",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Mouser Price/Stock",
+          "name": "Mouser Price/Stock",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "Height",
+          "name": "Height",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "#",
+          "name": "${ITEM_NUMBER}",
+          "show": false
+        },
+        {
+          "group_by": false,
+          "label": "JLC Part Type",
+          "name": "JLC Part Type",
+          "show": true
         }
       ],
       "filter_string": "",
       "group_symbols": true,
       "include_excluded_from_bom": true,
-      "name": "Default Editing",
+      "name": "",
       "sort_asc": true,
       "sort_field": "Reference"
     },
